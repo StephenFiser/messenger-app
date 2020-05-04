@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
       @current_user
     end
 
+    cookies[:user_id] = @current_user.id
+
     @current_user
   end
 
