@@ -1,4 +1,4 @@
-<%= form_with(model: message, local: true) do |form| %>
+<%= form_for(message) do |form| %>
   <% if message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -15,7 +15,7 @@
   <div class="input-group">
     <%= form.text_field :content, placeholder: "Type your message here...", class: 'form-control' %>
     <div class="input-group-append">
-      <%= form.submit "Add Message", class: "btn btn-primary" %>
+      <%= form.submit "Add Message", class: "btn btn-primary", id: 'chat-btn' %>
     </div>
   </div>
 <% end %>

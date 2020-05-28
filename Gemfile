@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'redis'
 
+gem 'cable_ready', '4.1.3', github: "stephenfiser/cable_ready", branch: "feature/broadcast_options"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

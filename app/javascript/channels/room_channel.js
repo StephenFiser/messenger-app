@@ -1,3 +1,4 @@
+import CableReady from 'cable_ready'
 import consumer from "./consumer"
 
 document.addEventListener('turbolinks:load', () => {
@@ -23,19 +24,15 @@ document.addEventListener('turbolinks:load', () => {
     },
 
     received(data) {
+      console.log(data)
       const user_element = document.getElementById('user-id');
       const user_id = Number(user_element.getAttribute('data-user-id'));
+      //  && user_id != data.message.user_id
+      let fromMe = (data.options.user_id == user_id)
 
-      let html;
-
-      if (user_id === data.message.user_id) {
-        html = data.mine
-      } else {
-        html = data.theirs
+      if (data.cableReady && !fromMe) {
+        CableReady.perform(data.operations)
       }
-
-      const messageContainer = document.getElementById('messages')
-      messageContainer.innerHTML = messageContainer.innerHTML + html
     }
   });
 })
